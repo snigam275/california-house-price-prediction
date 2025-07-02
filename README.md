@@ -1,2 +1,6 @@
-# 📌california-house-price-prediction 🏡
-This project by Team Deciforge aims to predict real estate prices across California using machine learning. The model leverages features such as median income, proximity to urban centers, housing age, and environmental indicators. Regression techniques are applied to model price trends and identify regional disparities. Visual insights are provided through interactive Power BI dashboards highlighting price hotspots, feature correlations, and market forecasts by county.
+📝 Project Report: Housing Data Analysis
+🔖 Team Name: DeciForge
+
+📌 Project Title:
+Exploratory Data Analysis on California Housing Dataset
+
