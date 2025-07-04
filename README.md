@@ -17,3 +17,17 @@ Loaded data from cleaned.csv.
 Removed rows with missing values in the total_bedrooms column to ensure consistency and reliability.
 
 Verified column names and data types for smooth processing.
+
+
+🏗️ 3. Feature Engineering
+Area Density: Computed as population divided by number of households.
+
+Income Category: Grouped median income into 'High' and 'Low' categories based on a threshold value of 6.
+
+Age Group: Categorized houses into 'New' (≤15 years), 'Middle-aged' (16–35 years), and 'Old' (>35 years).
+
+Rooms per Household: Derived to evaluate average space availability.
+
+Capped Age Flag: Identified homes with the maximum age value of 52.
+
+Ocean Proximity Encoding: Transformed the categorical ocean_proximity column into dummy variables for analysis.
