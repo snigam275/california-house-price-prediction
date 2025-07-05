@@ -31,3 +31,20 @@ Rooms per Household: Derived to evaluate average space availability.
 Capped Age Flag: Identified homes with the maximum age value of 52.
 
 Ocean Proximity Encoding: Transformed the categorical ocean_proximity column into dummy variables for analysis.
+
+
+
+📊 4. Visual Analysis & Insights
+🔸 Univariate Analysis
+Histogram of median_house_value revealed a right-skewed distribution and a price ceiling around $500,000.
+
+Pie chart displayed proportions of income categories.
+
+Donut chart showed the distribution of housing age groups.
+
+🔸 Bivariate Analysis
+Bar plots illustrated:
+
+Average house values by income category (High income areas had significantly higher house values).
+
+Price variation among housing age groups, with older homes generally.
