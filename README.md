@@ -48,3 +48,5 @@ Bar plots illustrated:
 Average house values by income category (High income areas had significantly higher house values).
 
 Price variation among housing age groups, with older homes generally.
+
+
