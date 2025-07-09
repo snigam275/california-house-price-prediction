@@ -22,6 +22,7 @@ This project, undertaken by Team DeciForge, explores key insights from the Calif
 - Histogram of median_house_value revealed a right-skewed distribution and a price ceiling around $500,000.
 - Pie chart displayed proportions of income categories.
 - Donut chart showed the distribution of housing age groups.
+
 🔸 Bivariate Analysis
 - Bar plots illustrated:
 - Average house values by income category (High income areas had significantly higher house values).
