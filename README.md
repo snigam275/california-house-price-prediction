@@ -1,6 +1,6 @@
 # **📝 California Housing Price Prediction**
 ## 🔖 Team Name: DeciForge
-## 📌 Project Title: California Housing Price Analysis and Prediction Using Machine Learning
+## 📌 Project Title: California Housing Price Analysis and Prediction Using   Machine Learning
 ### 🔍 1. Introduction
 This project, undertaken by Team DeciForge, explores key insights from the California housing dataset using data cleaning, feature engineering, and visual analytics. The goal is to identify and understand factors that influence house prices such as income, age of housing, population density, and proximity to the ocean.
 
