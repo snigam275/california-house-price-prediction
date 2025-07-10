@@ -42,3 +42,4 @@ print(df["house_age_category"])
 print(df)
 
 df.to_csv("C:\\Users\\HP\\OneDrive\\Documents\\Desktop\\summer_term\\Project\\pro\\finalise.csv")
+
