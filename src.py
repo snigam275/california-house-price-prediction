@@ -43,3 +43,21 @@ print(df)
 
 df.to_csv("C:\\Users\\HP\\OneDrive\\Documents\\Desktop\\summer_term\\Project\\pro\\finalise.csv")
 
+### Housing Price Distribution using Histogram  
+sns.set(style = 'whitegrid')
+plt.figure(figsize=(10,6))
+sns.histplot(df['median_house_value'],bins=30,kde=True,color='skyblue',edgecolor='navy')
+plt.title("Housing Price Distribution")
+plt.xlabel("Median House Value($)")
+plt.ylabel("Number of Houses")
+plt.tight_layout()
+
+### Average House Value by Housing Age Group using Bargraph
+plt.figure(figsize=(10,6))
+avg_house_price = df.groupby('house_age_category')["median_house_value"].mean().reset_index()
+sns.barplot(avg_house_price,x='house_age_category',y='median_house_value',hue='house_age_category',palette="pastel",legend=True)
+plt.title("Average House Value by Housing Age Group")
+plt.xlabel("House Age Category")
+plt.ylabel("Median House Value")
+plt.grid(True)
+
