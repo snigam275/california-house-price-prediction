@@ -133,4 +133,30 @@ plt.title("Correlation Matrix of Key Housing Features", fontsize=14)
 plt.tight_layout()
 plt.show()
 
-### 
+### BoxPlots of Numerical Features to show outliers
+exclude_cols = ['area_density', 'Rooms_per_Household']
+numerical_cols = [col for col in df.select_dtypes(include=['int64', 'float64']).columns if col not in exclude_cols]
+
+plt.figure(figsize=(16, 12))
+plt.suptitle("Box Plots of Numerical Features", fontsize=18)
+
+for i, col in enumerate(numerical_cols):
+    Q1 = df[col].quantile(0.25)
+    Q3 = df[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    outliers = df[(df[col] < lower_bound) | (df[col] > upper_bound)]
+
+    print(f"Column: {col}")
+    print(f"  - Lower Bound: {lower_bound:.2f}")
+    print(f"  - Upper Bound: {upper_bound:.2f}")
+    print(f"  - Outliers: {len(outliers)} ({(len(outliers) / len(df)) * 100:.2f}%)\n")
+
+    plt.subplot((len(numerical_cols) + 2) // 3, 3, i + 1)
+    sns.boxplot(x=df[col], color='lightblue')
+    plt.title(col)
+    plt.xlabel("")
+
+plt.tight_layout()
+plt.show()
