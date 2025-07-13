@@ -1,11 +1,19 @@
-### Cleaning of dataset
+### Libraries Used
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 # Loading of dataset
 df = pd.read_csv("C:\\Users\\HP\\OneDrive\\Documents\\Desktop\\summer_term\\Project\\pro\\housing.csv")
 
+# Cleaning of dataset
 print(df)
 print(df.isnull().sum())
 df = df.dropna()
@@ -159,4 +167,156 @@ for i, col in enumerate(numerical_cols):
     plt.xlabel("")
 
 plt.tight_layout()
+plt.show()
+
+# Model Training Using Machine Learning
+housingData = pd.read_csv("C:\\Users\\rajat\\Downloads\\cleaned(1).csv")
+print('Print first few rows of this data -\n')
+print(housingData.head())
+
+# Drop unnecessary columns
+cols_to_drop = ['Unnamed: 19', '<1H Ocean', 'Inland', 'Island', 'Near Bay', 'Near Ocean']
+housingData = housingData.drop(columns=[col for col in cols_to_drop if col in housingData.columns])
+
+# Separate input (X) and output (y)
+X = housingData.drop(['median_house_value'], axis=1)
+y = housingData['median_house_value'].values
+
+# Handle missing values
+# Separate numeric and categorical columns
+numeric_cols = X.select_dtypes(include=[np.number]).columns.tolist()
+categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
+
+# Impute missing values in numeric columns
+imputer = SimpleImputer(strategy='mean')
+X_numeric = pd.DataFrame(imputer.fit_transform(X[numeric_cols]), columns=numeric_cols)
+
+# One-hot encode categorical columns
+X_categorical = pd.get_dummies(X[categorical_cols], drop_first=True)
+
+# Combine numeric and encoded categorical data
+X_processed = pd.concat([X_numeric, X_categorical], axis=1)
+
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(X_processed, y, test_size=0.2, random_state=0)
+
+# Standardize data
+scaler_X = StandardScaler()
+X_train = scaler_X.fit_transform(X_train)
+X_test = scaler_X.transform(X_test)
+
+scaler_y = StandardScaler()
+y_train = scaler_y.fit_transform(y_train.reshape(-1, 1)).ravel()
+y_test = scaler_y.transform(y_test.reshape(-1, 1)).ravel()
+
+# Task1: Perform Linear Regression
+linearRegression = LinearRegression()
+linearRegression.fit(X_train, y_train)
+predictionLinear = linearRegression.predict(X_test)
+mseLinear = mean_squared_error(y_test, predictionLinear)
+print('Root mean squared error (RMSE) from Linear Regression =', np.sqrt(mseLinear))
+
+# Task2: Perform Decision Tree Regression'''
+DTregressor = DecisionTreeRegressor()
+DTregressor.fit(X_train, y_train)
+predictionDT = DTregressor.predict(X_test)
+mseDT = mean_squared_error(y_test, predictionDT)
+print('Root mean squared error from Decision Tree Regression =', np.sqrt(mseDT))
+
+
+# Task3: Perform Random Forest Regression'''
+RFregressor = RandomForestRegressor()
+RFregressor.fit(X_train, y_train)
+predictionRF = RFregressor.predict(X_test)
+mseRF = mean_squared_error(y_test, predictionRF)
+print('Root mean squared error from Random Forest Regression =', np.sqrt(mseRF))
+
+#Task4: Bonus exercise: Linear Regression with one feature
+# Find index of 'median_income' in processed columns
+feature_names = X_processed.columns.tolist()
+median_income_index = feature_names.index('median_income')
+
+# Extract only median_income from scaled X_train/X_test
+X_train_median_income = X_train[:, [median_income_index]]
+X_test_median_income = X_test[:, [median_income_index]]
+
+# Train and predict
+linearRegression2 = LinearRegression()
+linearRegression2.fit(X_train_median_income, y_train)
+predictionLinear2 = linearRegression2.predict(X_test_median_income)
+
+# Visualize Training set
+plt.scatter(X_train_median_income, y_train, color='green')
+plt.plot(X_train_median_income, linearRegression2.predict(X_train_median_income), color='red')
+plt.title('Training - median_income vs median_house_value')
+plt.xlabel('median_income (standardized)')
+plt.ylabel('median_house_value (standardized)')
+plt.show()
+
+# Visualize Testing set
+plt.scatter(X_test_median_income, y_test, color='blue')
+plt.plot(X_train_median_income, linearRegression2.predict(X_train_median_income), color='red')
+plt.title('Testing - median_income vs median_house_value')
+plt.xlabel('median_income (standardized)')
+plt.ylabel('median_house_value (standardized)')
+plt.show()
+
+# Plotting actual vs predicted values to visually assess model accuracy for Linear Regression
+plt.figure(figsize=(6,4))
+plt.scatter(y_test, predictionLinear, color='purple', alpha=0.5)
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 'r--')
+plt.title('Linear Regression: Actual vs Predicted')
+plt.xlabel('Actual')
+plt.ylabel('Predicted')
+plt.grid(True)
+plt.show()
+
+# Plotting actual vs predicted values to visually assess model accuracy for Decision Tree Regression
+plt.figure(figsize=(6,4))
+plt.scatter(y_test, predictionDT, color='green', alpha=0.5)
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 'r--')
+plt.title('Decision Tree: Actual vs Predicted')
+plt.xlabel('Actual')
+plt.ylabel('Predicted')
+plt.grid(True)
+plt.show()
+
+# Plotting actual vs predicted values to visually assess model accuracy for Random Forest Regression
+plt.figure(figsize=(6,4))
+plt.scatter(y_test, predictionRF, color='orange', alpha=0.5)
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 'r--')
+plt.title('Random Forest: Actual vs Predicted')
+plt.xlabel('Actual')
+plt.ylabel('Predicted')
+plt.grid(True)
+plt.show()
+
+# 📌 Visualizing which features are most influential in predicting house prices using Random Forest
+importances = RFregressor.feature_importances_
+indices = np.argsort(importances)[::-1]
+feature_names = X_processed.columns
+
+plt.figure(figsize=(10,6))
+plt.title("Feature Importance - Random Forest")
+plt.bar(range(X_processed.shape[1]), importances[indices], align='center')
+plt.xticks(range(X_processed.shape[1]), [feature_names[i] for i in indices], rotation=90)
+plt.tight_layout()
+plt.show()
+
+# 📌 Plotting house price distribution across California based on longitude and latitude (hotspot map)
+# Visualizing price by geo-coordinates
+plt.figure(figsize=(8,6))
+plt.scatter(housingData['longitude'], housingData['latitude'],c=housingData['median_house_value'], cmap='viridis', s=10)
+plt.colorbar(label='Median House Value')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.title('California Housing Prices by Location')
+plt.show()
+
+# 📌 Displaying correlation between numeric features to understand linear relationships in the dataset
+plt.figure(figsize=(10,6))
+numeric_data = housingData.select_dtypes(include=[np.number])
+correlation = numeric_data.corr()
+sns.heatmap(correlation, annot=True, cmap='coolwarm', fmt=".2f")
+plt.title("Feature Correlation Heatmap")
 plt.show()
