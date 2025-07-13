@@ -291,7 +291,7 @@ plt.ylabel('Predicted')
 plt.grid(True)
 plt.show()
 
-# 📌 Visualizing which features are most influential in predicting house prices using Random Forest
+# Visualizing which features are most influential in predicting house prices using Random Forest
 importances = RFregressor.feature_importances_
 indices = np.argsort(importances)[::-1]
 feature_names = X_processed.columns
@@ -303,7 +303,7 @@ plt.xticks(range(X_processed.shape[1]), [feature_names[i] for i in indices], rot
 plt.tight_layout()
 plt.show()
 
-# 📌 Plotting house price distribution across California based on longitude and latitude (hotspot map)
+# Plotting house price distribution across California based on longitude and latitude (hotspot map)
 # Visualizing price by geo-coordinates
 plt.figure(figsize=(8,6))
 plt.scatter(housingData['longitude'], housingData['latitude'],c=housingData['median_house_value'], cmap='viridis', s=10)
@@ -313,7 +313,7 @@ plt.ylabel('Latitude')
 plt.title('California Housing Prices by Location')
 plt.show()
 
-# 📌 Displaying correlation between numeric features to understand linear relationships in the dataset
+# Displaying correlation between numeric features to understand linear relationships in the dataset
 plt.figure(figsize=(10,6))
 numeric_data = housingData.select_dtypes(include=[np.number])
 correlation = numeric_data.corr()
