@@ -4,7 +4,7 @@
 ### 🔍 1. Introduction
 This project, undertaken by Team DeciForge, explores key insights from the California housing dataset using data cleaning, feature engineering, and visual analytics. The goal is to identify and understand factors that influence house prices such as income, age of housing, population density, and proximity to the ocean.
 
-### 2. Data Cleaning & Preparation
+### 📚 2. Data Cleaning & Preparation
 - Loaded data from cleaned.csv.
 - Removed rows with missing values in the total_bedrooms column to ensure consistency and reliability.
 - Verified column names and data types for smooth processing.
@@ -33,7 +33,7 @@ This project, undertaken by Team DeciForge, explores key insights from the Calif
 - Box plots helped detect outliers in features like total_rooms, population, and households.
 - Scatter plots between income and house value confirmed increasing trends with income rise.
 
-###  💻5. Machine Learning Modeling
+###  💻 5. Machine Learning Modeling
 Trained and evaluated the following models using scaled and preprocessed data:
 * Linear Regression: Basic baseline model to establish linear trend.
 * Decision Tree Regressor: Captured non-linearities but prone to overfitting.
