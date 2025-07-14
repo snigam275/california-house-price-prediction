@@ -304,7 +304,7 @@ plt.tight_layout()
 plt.show()
 
 # Plotting house price distribution across California based on longitude and latitude (hotspot map)
-# Visualizing price by geo-coordinates
+# Visualizing price by geo co-ordinates
 plt.figure(figsize=(8,6))
 plt.scatter(housingData['longitude'], housingData['latitude'],c=housingData['median_house_value'], cmap='viridis', s=10)
 plt.colorbar(label='Median House Value')
