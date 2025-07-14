@@ -28,4 +28,21 @@ This project, undertaken by Team DeciForge, explores key insights from the Calif
 - Average house values by income category (High income areas had significantly higher house values).
 - Price variation among housing age groups, with older homes generally.
 
+🔸 Multivariate Analysis
+- Heatmap of numerical features revealed strong positive correlation between median_income and median_house_value.
+- Box plots helped detect outliers in features like total_rooms, population, and households.
+- Scatter plots between income and house value confirmed increasing trends with income rise.
 
+###  5. Machine Learning Modeling
+Trained and evaluated the following models using scaled and preprocessed data:
+* Linear Regression: Basic baseline model to establish linear trend.
+* Decision Tree Regressor: Captured non-linearities but prone to overfitting.
+* Random Forest Regressor: Most accurate with lowest RMSE; also used to derive feature importance.
+
+### 🎯 Performance Evaluation
+- Root Mean Squared Error (RMSE) was calculated for each model to measure prediction accuracy.
+- Visualized Actual vs Predicted plots to better understand the model fit on test data.
+  
+### 📌 Additional Insights from ML
+* Linear regression with a single feature (median_income) demonstrated a clear income-house value relationship.
+* Feature importance plot from Random Forest identified top contributing features like median_income, area_density, and total_rooms.
