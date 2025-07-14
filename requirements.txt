@@ -1,0 +1,18 @@
+# --- Data Manipulation & Analysis ---
+pandas==2.2.2            # Used for loading, cleaning, transforming, and analyzing structured data.
+numpy==1.26.4            # Provides support for numerical operations and array structures used in ML models and transformations.
+
+# --- Data Visualization ---
+matplotlib==3.8.4        # Base library used for creating static, animated, and interactive plots.
+seaborn==0.13.2          # Built on top of matplotlib; used for statistical visualizations like heatmaps, boxplots, and distribution plots.
+
+# --- Machine Learning & Preprocessing ---
+scikit-learn==1.4.2      # Core ML library used for:
+                         # - Model training (Linear Regression, Decision Tree, Random Forest)
+                         # - Data scaling using StandardScaler
+                         # - Missing value imputation using SimpleImputer
+                         # - Train-test splitting
+                         # - Evaluation metrics (e.g., Mean Squared Error)
+# --- Tool for Dashboard ---
+Power BI                 # Used to build the interactive dashboard in this project.
+                         # Standalone application that can be downloaded from its official website.
