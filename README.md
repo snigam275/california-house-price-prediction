@@ -33,7 +33,7 @@ This project, undertaken by Team DeciForge, explores key insights from the Calif
 - Box plots helped detect outliers in features like total_rooms, population, and households.
 - Scatter plots between income and house value confirmed increasing trends with income rise.
 
-###  5. Machine Learning Modeling
+###  💻5. Machine Learning Modeling
 Trained and evaluated the following models using scaled and preprocessed data:
 * Linear Regression: Basic baseline model to establish linear trend.
 * Decision Tree Regressor: Captured non-linearities but prone to overfitting.
@@ -47,10 +47,27 @@ Trained and evaluated the following models using scaled and preprocessed data:
 * Linear regression with a single feature (median_income) demonstrated a clear income-house value relationship.
 * Feature importance plot from Random Forest identified top contributing features like median_income, area_density, and total_rooms.
 
-###  6. Power BI Dashboard
+###  🗂️6. Power BI Dashboard
 An interactive Power BI dashboard was created for visual storytelling and business understanding:
 * 📊 KPIs like average housing age, median income, and total population.
 * 📌 Geo-scatter map shows population concentration across California.
 * 🧩 Filters allow segmentation by age category and ocean proximity.
 * 🟣 Doughnut charts reveal distribution of houses and rooms based on proximity to ocean.
 * 📈 Dynamic bar and table views track median house values by multiple factors.
+
+### 🚀 Future Work
+* Incorporate More Features:
+- Integrate environmental indicators, crime rates, school ratings, or job market indices to improve prediction accuracy.
+
+* Time Series Forecasting:
+- Add a temporal dimension using past housing prices to forecast future trends using models like ARIMA, LSTM, or Prophet.
+
+* Model Deployment:
+- Convert the trained model into a deployable API using Flask or FastAPI, and integrate it into a web app for public use.
+
+* Interactive Web Dashboard:
+- Upgrade from Power BI to a Plotly Dash or Streamlit app for interactive, code-integrated insights and live prediction functionality.
+
+* Clustering Analysis:
+- Use K-Means or DBSCAN to segment neighborhoods/regions into distinct housing markets based on price, density, and proximity factors.
+
