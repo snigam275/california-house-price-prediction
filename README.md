@@ -47,7 +47,7 @@ Trained and evaluated the following models using scaled and preprocessed data:
 * Linear regression with a single feature (median_income) demonstrated a clear income-house value relationship.
 * Feature importance plot from Random Forest identified top contributing features like median_income, area_density, and total_rooms.
 
-###  🗂️6. Power BI Dashboard
+###  🗂️ 6. Power BI Dashboard
 An interactive Power BI dashboard was created for visual storytelling and business understanding:
 * 📊 KPIs like average housing age, median income, and total population.
 * 📌 Geo-scatter map shows population concentration across California.
@@ -55,7 +55,7 @@ An interactive Power BI dashboard was created for visual storytelling and busine
 * 🟣 Doughnut charts reveal distribution of houses and rooms based on proximity to ocean.
 * 📈 Dynamic bar and table views track median house values by multiple factors.
 
-### 🚀 Future Work
+### 🚀 7. Future Work
 * Incorporate More Features:
 - Integrate environmental indicators, crime rates, school ratings, or job market indices to improve prediction accuracy.
 
